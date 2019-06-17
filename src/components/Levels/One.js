@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Questions from './Questions'
 
-function One(props) {
+class One extends Component {
+  constructor() {
+    super()
+    this.state = {
+
+    }
+  }
+  render() {
+    const questions = this.props.questions.map( q => <li key={Math.random()}>{q.question}</li>)
     return (
-      <div>
-          One
-          <Questions questions={props.questions}/>
-      </div>
-    );
+    <ol>
+      One
+      {questions}
+      </ol>
+      );
+    }
   }
 
 export default One

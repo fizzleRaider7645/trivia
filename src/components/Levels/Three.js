@@ -2,10 +2,11 @@ import React from 'react'
 import Questions from './Questions'
 
 function Three(props) {
+  const questions = props.questions.map( q => <li key={Math.random()}>{q.question}</li>)
     return (
       <div>
           Three
-          <Questions questions={props.questions}/>
+          {questions}
       </div>
     );
   }
