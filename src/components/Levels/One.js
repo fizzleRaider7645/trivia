@@ -1,25 +1,48 @@
 import React, { Component } from 'react'
-import QuestionDisplay from '../QuestionDisplay'
+import QuestionContainer from '../QuestionContainer'
+import { connect } from 'react-redux'
+import { fetchEasyQuestions } from '../../actions/QuestionActions'
 
 class One extends Component {
   constructor() {
     super()
     this.state = {
-      correctAnswers: 0
+      questionsAsked: 0
     }
   }
 
+  componentDidMount = () => {
+    this.props.fetchEasyQuestions()
+  }
+
+  questionAsked = () => {
+    this.setState({
+      questionsAsked: this.state.questionsAsked + 1
+    })
+  }
+
   render() {
-    // const questions = this.props.questions.map( q => <li key={Math.random()}>{q.question}</li>)
-    const questions = this.props.questions.map( q =>  q ) 
+    let questions;
+    let questionDisplay;
+
+    if(this.props.currentQuestionSet.length > 0) {
+      questions = this.props.currentQuestionSet.map( q =>  q )
+      questionDisplay = <QuestionContainer questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+    }
+
     return (
     <ol>
       One
-      <QuestionDisplay question={questions[0]} />
-      {/* {questions} */}
+      {questionDisplay}
       </ol>
       );
     }
   }
 
-export default One
+  const mapStatetoProps = (state) => {
+    return ({
+      currentQuestionSet: state.questions
+    })
+  }
+
+export default connect(mapStatetoProps, { fetchEasyQuestions })(One)

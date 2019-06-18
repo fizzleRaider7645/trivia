@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import Questions from './Questions'
+import { connect } from 'react-redux'
+import { fetchHardQuestions } from '../../actions/QuestionActions'
 
 class Three extends Component {
   constructor() {
@@ -20,4 +21,10 @@ class Three extends Component {
     }
   }
 
-export default Three
+  const mapStatetoProps = (state) => {
+    return ({
+      currentQuestionSet: state.questions
+    })
+  }
+
+export default connect(mapStatetoProps, { fetchHardQuestions })(Three)
