@@ -2,38 +2,28 @@ import React, { Component } from 'react';
 import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
-// import { connect } from 'react-redux'
-// import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions'
 
 class Arena extends Component {
   constructor() {
     super()
     this.state = {
-      level: 1,
-      levelWon: false
+      level: 1
     }
   }
 
-  advanceToLevelTwo = () => {
+  advance = () => {
     this.setState({
-      level: 2
+      level: this.state.level + 1
     })
   }
-
-  advanceToLevelThree = () => {
-    this.setState({
-      level: 3
-    })
-  }
-
 
 
   render() {
       let level;
       if(this.state.level === 1) {
-        level = <One advance={this.advanceToLevelTwo}/>
+        level = <One advance={this.advance} />
       } else if(this.state.level === 2) {
-        level = <Two questions={this.props.currentQuestionSet} advance={this.advanceToLevelThree}/>
+        level = <Two advance={this.advance}/>
       } else {
         level = <Three questions={this.props.currentQuestionSet}/>
       }
@@ -47,11 +37,4 @@ class Arena extends Component {
   }
 }
 
-const mapStatetoProps = (state) => {
-  return ({
-    currentQuestionSet: state.questions
-  })
-}
-
-// export default connect(mapStatetoProps, { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions })(Arena);
 export default Arena

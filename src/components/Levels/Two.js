@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import QuestionContainer from '../QuestionContainer'
 import { connect } from 'react-redux'
 import { fetchMediumQuestions } from '../../actions/QuestionActions'
 
@@ -6,16 +7,36 @@ class Two extends Component {
   constructor() {
     super()
     this.state = {
-      correctAnswers: 0
+      questionsAsked: 0
     }
   }
-  
+
+  componentDidMount = () => {
+    this.props.fetchMediumQuestions()
+  }
+
+  questionAsked = () => {
+    if(this.state.questionsAsked === 4) {
+      this.props.advance()
+    }
+    this.setState({
+      questionsAsked: this.state.questionsAsked + 1
+    })
+  }
+
   render() {
-    const questions = this.props.questions.map( q => <li key={Math.random()}>{q.question}</li>)
+    let questions;
+    let questionDisplay;
+
+    if(this.props.currentQuestionSet.length > 0) {
+      questions = this.props.currentQuestionSet.map( q =>  q )
+      questionDisplay = <QuestionContainer questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+    }
+
     return (
     <ol>
       Two
-      {questions}
+      {questionDisplay}
       </ol>
       );
     }

@@ -16,6 +16,9 @@ class One extends Component {
   }
 
   questionAsked = () => {
+    if(this.state.questionsAsked === 4) {
+      this.props.advance()
+    }
     this.setState({
       questionsAsked: this.state.questionsAsked + 1
     })
@@ -27,7 +30,7 @@ class One extends Component {
 
     if(this.props.currentQuestionSet.length > 0) {
       questions = this.props.currentQuestionSet.map( q =>  q )
-      questionDisplay = <QuestionContainer questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+      questionDisplay = <QuestionContainer questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
     }
 
     return (

@@ -29,15 +29,13 @@ class QuestionContainer extends Component {
     }
   }
 
-  componentDidMount=()=>{
-    console.log(this.props.currentQuestionSet)
-  }
-
   handleClick = () => {
-    const correctAnswer = this.props.question.correct_answer.toLowerCase()
+    const questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
+    const correctAnswer = questionObj.correct_answer.toLowerCase()
     const contestantAnswer = this.state.contestantAnswer.toLowerCase()
+    
     if(correctAnswer === contestantAnswer) {
-      this.props.questionsAsked()
+      this.props.questionAsked()
       alert("CORRECT!")
       this.setState({
         guessing: false
@@ -52,28 +50,27 @@ class QuestionContainer extends Component {
   }
   
   render() {
-      // let answerBank = this.props.question.incorrect_answers;
-      let answerBank = this.props.currentQuestionSet[this.props.questionsAsked]
-      console.log(answerBank)
-      // if(this.state.guessing === false) {
-      //     answerBank.push(this.props.question.correct_answer)
-      //     this.shuffle(answerBank)
-      //   }
+    let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
+    let answerBank = questionObj.incorrect_answers
+      
+    if(this.state.guessing === false) {
+          answerBank.push(questionObj.correct_answer)
+          this.shuffle(answerBank)
+        }
         
-        // answerBank = answerBank.map( question => <li key={Math.random()}>{question}</li>)
+        answerBank = answerBank.map( question => <li key={Math.random()}>{question}</li>)
 
       return (
       <div>
-      {/* <h2>{this.props.question.question}</h2> */}
-      {/* {answerBank}<br /> */}
-      <input type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
-      <button onClick={this.handleClick}>Submit</button>
-      </div>
+        <h2>{questionObj.question}</h2>
+        {answerBank}<br />
+        <input type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
+        <button onClick={this.handleClick}>Submit</button>
+        </div>
       );
     }
   }
 
-// export default QuestionContainer
 const mapStatetoProps = (state) => {
   return ({
     currentQuestionSet: state.questions
