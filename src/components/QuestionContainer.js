@@ -33,16 +33,18 @@ class QuestionContainer extends Component {
     const questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
     const correctAnswer = questionObj.correct_answer.toLowerCase()
     const contestantAnswer = this.state.contestantAnswer.toLowerCase()
-    
     if(correctAnswer === contestantAnswer) {
-      this.props.questionAsked()
       alert("CORRECT!")
+      this.props.questionAsked()
       this.setState({
         guessing: false
       })
     } else if(contestantAnswer === "") {
       alert("Must Submit an Answer!")
       return
+    } else {
+      alert("THAT IS INCORRECT!")
+      this.props.gameOver()
     }
     this.setState({
       contestantAnswer: ""
@@ -64,8 +66,8 @@ class QuestionContainer extends Component {
       <div>
         <h2>{questionObj.question}</h2>
         {answerBank}<br />
-        <input type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
-        <button onClick={this.handleClick}>Submit</button>
+        <input className="center-content" type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
+        <button className="center-content" onClick={this.handleClick}>Submit</button>
         </div>
       );
     }

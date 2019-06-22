@@ -19,12 +19,20 @@ class App extends Component {
     })
   }
 
+  gameOver = () => {
+    alert('Game Over...')
+    this.setState({
+      gameInProgress: false,
+      contestant: ""
+    })
+  }
+
   render() {
     let loginForm;
     let arena;
 
     if(this.state.gameInProgress) {
-      arena = <Arena contestant={this.state.contestant}/>
+      arena = <Arena contestant={this.state.contestant} gameOver={this.gameOver}/>
     } else {
       loginForm = <LoginForm initiateGame={this.initiateGame}/>
     }

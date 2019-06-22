@@ -30,12 +30,11 @@ class One extends Component {
 
     if(this.props.currentQuestionSet.length > 0) {
       questions = this.props.currentQuestionSet.map( q =>  q )
-      questionDisplay = <QuestionContainer questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+      questionDisplay = <QuestionContainer gameOver={this.props.gameOver} questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
     }
 
     return (
     <ol>
-      One
       {questionDisplay}
       </ol>
       );
