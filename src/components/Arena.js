@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
+import Chat from './Chat'
 import '../App.css'
 
 class Arena extends Component {
@@ -10,7 +11,8 @@ class Arena extends Component {
     this.state = {
       level: 1,
       contestantHasWon: false,
-      earnings: 0
+      earnings: 0,
+      callAFriend: false
     }
   }
 
@@ -29,9 +31,17 @@ class Arena extends Component {
     this.props.gameOver()
   }
 
+  lifeLineClick = () => {
+    this.setState({
+      callAFriend: true
+    })
+  }
+
 
   render() {
       let level;
+      let chat;
+
       if(this.state.level === 1) {
         level = <One advance={this.advance} gameOver={this.props.gameOver}/>
       } else if(this.state.level === 2) {
@@ -40,10 +50,16 @@ class Arena extends Component {
         level = <Three questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
       }
 
+      if(this.state.callAFriend) {
+        chat = <Chat />
+      }
+
     return (
       <div id="arena">
-          <h1 id="contestant-name" className="center-content">Welcome, {this.props.contestant}!</h1>
+          <h1 id="add-font" className="center-content">Welcome, {this.props.contestant}!</h1>
           {level}
+          {chat}
+          <button onClick={this.lifeLineClick}>Call A Friend</button>
       </div>
     );
   }

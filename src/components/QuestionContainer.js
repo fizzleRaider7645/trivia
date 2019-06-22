@@ -64,7 +64,7 @@ class QuestionContainer extends Component {
 
       return (
       <div>
-        <h2>{questionObj.question}</h2>
+        <h2 id="add-font">{questionObj.question}</h2>
         {answerBank}<br />
         <input className="center-content" type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
         <button className="center-content" onClick={this.handleClick}>Submit</button>

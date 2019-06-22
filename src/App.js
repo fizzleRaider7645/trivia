@@ -8,7 +8,7 @@ class App extends Component {
     super()
     this.state = {
       gameInProgress: false,
-      contestant: ""
+      contestant: "",
     }
   }
 
