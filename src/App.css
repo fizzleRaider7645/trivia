@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: green;
 }
 
 .App-link {
@@ -44,26 +44,59 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-    font-family: "Press Start 2P";
-}
-
-/* #add-font {
   font-family: "Press Start 2P";
-} */
+  color: white;
+  text-align: center;
+  background-color: black;
+  padding-right: 50px;
+  padding-left: 50px;
+}
 
-#container {
+h1 {
+  color: white;
+  border: 20px dotted yellow;
+  padding: 20px;
+
+}
+
+
+@keyframes blinkingText{
+  0%{     color: #000;    }
+  49%{    color: transparent; }
+  50%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #000;    }
+}
+
+input {
+  background-color: white;
+  color: black;
+}
+
+ul li {
+  list-style-type: none;
+  color: red;
+}
+
+button {
+  background-color: blue;
+}
+
+#life-line-btn {
+  background-color: red;
+  /* margin: auto; */
+  border-radius: 50%;
+}
+
+
+/* #container {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-areas: "sidebar main";
     width: 100vw;
     height: 100vh;
 }
+
 #main {
     grid-area: main;
 }
@@ -83,4 +116,19 @@ body {
     padding: 5px 0 0 5px;
     border-right: 1px solid #3f3f3f;
     height: 100%;
+} */
+
+/* 
+ol {
+  text-align: center;
 }
+
+input {
+  font-family: "Press Start 2P";
+  text-align: center;
+}
+
+button {
+  font-family: "Press Start 2P";
+  text-align: center;
+} */

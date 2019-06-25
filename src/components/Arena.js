@@ -56,10 +56,10 @@ class Arena extends Component {
 
     return (
       <div id="arena">
-          <h1 id="add-font" className="center-content">Welcome, {this.props.contestant}!</h1>
+          <h1>Who Wants to Win 5 Bucks?!</h1>
           {level}
           {chat}
-          <button onClick={this.lifeLineClick}>Call A Friend</button>
+          <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
       </div>
     );
   }

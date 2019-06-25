@@ -63,11 +63,11 @@ class QuestionContainer extends Component {
         answerBank = answerBank.map( question => <li key={Math.random()}>{question}</li>)
 
       return (
-      <div>
+      <div class="answerBank">
         <h2 id="add-font">{questionObj.question}</h2>
         {answerBank}<br />
-        <input className="center-content" type="text" value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Answer"></input><br />
-        <button className="center-content" onClick={this.handleClick}>Submit</button>
+        <input value={this.state.contestantAnswer} onChange={this.handleChange} placeholder="Copy/Paste Answer..."></input><br />
+        <button onClick={this.handleClick}>Final Answer!</button>
         </div>
       );
     }
