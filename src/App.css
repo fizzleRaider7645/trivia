@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -37,7 +37,7 @@
   width: 50%;
   border: 3px solid green;
   padding: 10px;
-}
+} */
 
 /* Added CSS */
 
@@ -53,29 +53,42 @@
 }
 
 h1 {
-  color: white;
-  border: 20px dotted yellow;
-  padding: 20px;
+  padding-top: 20px;
+  color: gold;
+  border: 20px dotted blue;
+  padding: 30px;
 
 }
 
-
-@keyframes blinkingText{
-  0%{     color: #000;    }
-  49%{    color: transparent; }
-  50%{    color: transparent; }
-  99%{    color:transparent;  }
-  100%{   color: #000;    }
+#marquee-border {
+  border: 30px dotted yellow;
+  animation: blink 1s;
+  animation-iteration-count: infinite;
 }
+
+@keyframes blink { 50% { border-color:white ; }  }
+
+
 
 input {
-  background-color: white;
+  background-color: gold;
   color: black;
 }
 
-ul li {
+h2 {
+  color: Chartreuse ;
+  border: 5px solid Ivory;
+  background-color: black;
+  padding: 20px;
+  text-align: none;
+  overflow-wrap: break-word;
+}
+
+
+ol li {
   list-style-type: none;
-  color: red;
+  color: Ivory;
+  padding: 10px;
 }
 
 button {
@@ -84,51 +97,5 @@ button {
 
 #life-line-btn {
   background-color: red;
-  /* margin: auto; */
   border-radius: 50%;
 }
-
-
-/* #container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas: "sidebar main";
-    width: 100vw;
-    height: 100vh;
-}
-
-#main {
-    grid-area: main;
-}
-#new-message {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 5px;
-    margin-left: 0px;
-    border-top: 1px solid #3f3f3f;
-}
-#messages-list {
-    padding: 5px 0 0 5px;
-}
-#sidebar {
-    grid-area: sidebar;
-    padding: 5px 0 0 5px;
-    border-right: 1px solid #3f3f3f;
-    height: 100%;
-} */
-
-/* 
-ol {
-  text-align: center;
-}
-
-input {
-  font-family: "Press Start 2P";
-  text-align: center;
-}
-
-button {
-  font-family: "Press Start 2P";
-  text-align: center;
-} */

@@ -34,9 +34,9 @@ class Two extends Component {
     }
 
     return (
-    <ul>
+    <ol>
       {questionDisplay}
-      </ul>
+      </ol>
       );
     }
   }

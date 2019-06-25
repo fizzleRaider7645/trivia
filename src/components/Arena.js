@@ -56,7 +56,9 @@ class Arena extends Component {
 
     return (
       <div id="arena">
+        <div id="marquee-border">
           <h1>Who Wants to Win 5 Bucks?!</h1>
+          </div>
           {level}
           {chat}
           <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
