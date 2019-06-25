@@ -75,6 +75,30 @@ input {
   color: black;
 }
 
+#name-input {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+#name-input button {
+    color: red;
+    font-size: 22px;
+    /* text-align: center; */
+    border: 10px solid yellow; 
+    border-radius: 25px;
+    position:absolute;
+    width:200px;
+    height:100px;
+    /* background:#063; */
+    top:350px;
+    right:25%;
+    left:60%;
+    margin-left:-150px;
+}
+
 h2 {
   color: Chartreuse ;
   border: 5px solid Ivory;
@@ -93,9 +117,12 @@ ol li {
 
 button {
   background-color: blue;
+  color: red;
+  border: gold;
 }
 
 #life-line-btn {
+  color: white;
   background-color: red;
   border-radius: 50%;
 }

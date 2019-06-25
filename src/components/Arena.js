@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
-import Chat from './Chat'
+// import Chat from './Chat'
 import '../App.css'
 
 class Arena extends Component {
@@ -12,7 +12,7 @@ class Arena extends Component {
       level: 1,
       contestantHasWon: false,
       earnings: 0,
-      callAFriend: false
+      calledAFriend: false
     }
   }
 
@@ -33,14 +33,15 @@ class Arena extends Component {
 
   lifeLineClick = () => {
     this.setState({
-      callAFriend: true
+      calledAFriend: true
     })
+    window.open('https://who-wants-to-win-bucks-chat.herokuapp.com/')
   }
 
 
   render() {
       let level;
-      let chat;
+      let lifeLineButton;
 
       if(this.state.level === 1) {
         level = <One advance={this.advance} gameOver={this.props.gameOver}/>
@@ -50,8 +51,8 @@ class Arena extends Component {
         level = <Three questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
       }
 
-      if(this.state.callAFriend) {
-        chat = <Chat />
+      if(!this.state.calledAFriend) {
+        lifeLineButton = <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
       }
 
     return (
@@ -60,8 +61,10 @@ class Arena extends Component {
           <h1>Who Wants to Win 5 Bucks?!</h1>
           </div>
           {level}
-          {chat}
-          <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
+          {lifeLineButton}
+          <div id="scoreboard">
+            
+          </div>
       </div>
     );
   }

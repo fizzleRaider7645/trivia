@@ -23,9 +23,12 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-          <label>Name: </label>
-          <input id="name-input" type="text" onChange={this.handleChange}></input><br />
-          <button>Submit</button>
+        <div id="name-input">
+          <h1>You Wanna Win 5 Bucks?</h1><br />
+          <label>Enter Name:</label>
+          <input type="text" onChange={this.handleChange}></input>
+            <button>Play</button>
+        </div>
       </form>
     );
   }
