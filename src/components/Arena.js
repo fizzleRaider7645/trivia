@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
+import Round from './Round'
 // import Chat from './Chat'
 import '../App.css'
 
@@ -17,10 +18,14 @@ class Arena extends Component {
   }
 
   advance = () => {
-    alert(`ON TO LEVEL ${this.state.level + 1}!`)
-    this.setState({
-      level: this.state.level + 1
-    })
+    if(this.state.level === 3) {
+      this.contestantHasWon()
+    } else {
+      alert(`ON TO LEVEL ${this.state.level + 1}!`)
+      this.setState({
+        level: this.state.level + 1
+      })
+    }
   }
 
   contestantHasWon = () => {
@@ -38,17 +43,23 @@ class Arena extends Component {
     window.open('https://who-wants-to-win-bucks-chat.herokuapp.com/')
   }
 
+  getEarnings = () => {
+    this.setState({
+      earnings: this.state.earnings + .33
+    })
+  }
+
 
   render() {
       let level;
       let lifeLineButton;
 
       if(this.state.level === 1) {
-        level = <One advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <One getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       } else if(this.state.level === 2) {
-        level = <Two advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <Two getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       } else {
-        level = <Three questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
+        level = <Three getEarnings={this.getEarnings} questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
       }
 
       if(!this.state.calledAFriend) {
@@ -60,10 +71,14 @@ class Arena extends Component {
         <div id="marquee-border">
           <h1>Who Wants to Win 5 Bucks?!</h1>
           </div>
+          {/* <Round getEarnings={this.getEarnings} currentLevel={this.state.level} advance={this.advance} gameOver={this.props.gameOver} /> */}
           {level}
           {lifeLineButton}
           <div id="scoreboard">
-            
+            <p>Player: {this.props.contestant}</p>
+            <p>Level: {this.state.level}</p>
+            <p>Earnings: ${this.state.earnings.toFixed(2)}</p>
+
           </div>
       </div>
     );

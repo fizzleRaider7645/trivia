@@ -10,7 +10,12 @@ class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.initiateGame(this.state)
+    if(this.state.contestant === "" ) {
+      alert('Enter Name to Play!')
+      return
+    } else {
+      this.props.initiateGame(this.state)
+    }
 
   }
 

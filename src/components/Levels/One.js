@@ -30,7 +30,7 @@ class One extends Component {
 
     if(this.props.currentQuestionSet.length > 0) {
       questions = this.props.currentQuestionSet.map( q =>  q )
-      questionDisplay = <QuestionContainer gameOver={this.props.gameOver} questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+      questionDisplay = <QuestionContainer getEarnings={this.props.getEarnings} gameOver={this.props.gameOver} questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
     }
 
     return (

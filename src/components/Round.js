@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import QuestionContainer from '../QuestionContainer'
+import QuestionContainer from './QuestionContainer'
 import { connect } from 'react-redux'
-import { fetchMediumQuestions } from '../../actions/QuestionActions'
+import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions'
 
-class Two extends Component {
+class Round extends Component {
   constructor() {
     super()
     this.state = {
@@ -12,7 +12,14 @@ class Two extends Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchMediumQuestions()
+      let currentLevel = this.props.currentLevel
+      if(currentLevel === 1) {
+          this.props.fetchEasyQuestions()
+      } else if(currentLevel === 2) {
+        this.props.fetchMediumQuestions()
+      } else {
+          this.props.fetchHardQuestions()
+      }
   }
 
   questionAsked = () => {
@@ -47,4 +54,4 @@ class Two extends Component {
     })
   }
 
-export default connect(mapStatetoProps, { fetchMediumQuestions })(Two)
+export default connect(mapStatetoProps, { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions })(Round)
