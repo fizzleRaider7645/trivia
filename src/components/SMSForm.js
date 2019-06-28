@@ -34,15 +34,10 @@ class SMSForm extends Component {
           .then(res => res.json())
           .then(data => {
             if (data.success) {
-              this.setState({
-                error: false,
-                submitting: false,
-                message: {
-                  to: '',
-                  body: ''
-                }
-              });
+                this.props.textSent()
+                window.open('https://who-wants-to-win-bucks-chat.herokuapp.com/')
             } else {
+                alert('Invalid Number. Try Again!')
               this.setState({
                 error: true,
                 submitting: false
@@ -53,8 +48,9 @@ class SMSForm extends Component {
     
     render() {
         return (
+            <div id="popup">
             <form
-            onSubmit={this.onSubmit} className={this.state.error ? 'error sms-form' : 'sms-form'}>
+            id="myPopup" onSubmit={this.onSubmit} className={this.state.error ? 'error sms-form' : 'sms-form'}>
             <div>
               <label htmlFor="to">Who Would You Like To Call!?:</label>
               <input
@@ -67,6 +63,7 @@ class SMSForm extends Component {
             </div>
             <button type="submit" disabled={this.state.submitting}>Send message</button>
           </form>
+          </div>
         );
     }
 }

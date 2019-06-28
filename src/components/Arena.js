@@ -12,7 +12,8 @@ class Arena extends Component {
       level: 1,
       contestantHasWon: false,
       earnings: 0,
-      calledAFriend: false
+      calledAFriend: false,
+      textSent: false
     }
   }
 
@@ -39,7 +40,6 @@ class Arena extends Component {
     this.setState({
       calledAFriend: true
     })
-    // window.open('https://who-wants-to-win-bucks-chat.herokuapp.com/')
   }
 
   getEarnings = () => {
@@ -48,11 +48,17 @@ class Arena extends Component {
     })
   }
 
+  textSent = () => {
+    this.setState({
+      textSent: true
+    })
+  }
 
   render() {
       let level;
       let lifeLineButton;
       let calledAFriend;
+      let smsForm;
 
       if(this.state.level === 1) {
         level = <One getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
@@ -62,10 +68,13 @@ class Arena extends Component {
         level = <Three getEarnings={this.getEarnings} questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
       }
 
-      if(!this.state.calledAFriend) {
-        lifeLineButton = <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
+      if(this.state.calledAFriend && this.state.textSent) {
+        lifeLineButton = <span id="life-line-used"></span>
+      } else if(this.state.calledAFriend && !this.state.textSent) {
+        smsForm = <SMSForm contestant={this.props.contestant} textSent={this.textSent}/>
+        lifeLineButton = <span></span>
       } else {
-        calledAFriend = <SMSForm contestant={this.props.contestant}/>
+        lifeLineButton = <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
       }
 
     return (
@@ -76,11 +85,11 @@ class Arena extends Component {
           {level}
           {calledAFriend}
           {lifeLineButton}
+          {smsForm}
           <div id="scoreboard">
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
             <p>Earnings: ${this.state.earnings.toFixed(2)}</p>
-
           </div>
       </div>
     );

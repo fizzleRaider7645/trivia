@@ -1,6 +1,7 @@
 .sms-form {
     text-align: left;
     padding: 1em;
+    z-index: 1;
   }
   .sms-form label {
     display: block;
@@ -20,4 +21,11 @@
   }
   .sms-form.error {
     outline: 2px solid #f00;
+  }
+
+  #popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 1;
   }
