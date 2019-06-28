@@ -72,7 +72,7 @@ class Arena extends Component {
         lifeLineButton = <span id="life-line-used"></span>
       } else if(this.state.calledAFriend && !this.state.textSent) {
         smsForm = <SMSForm contestant={this.props.contestant} textSent={this.textSent}/>
-        lifeLineButton = <span></span>
+        lifeLineButton = <span id="life-line-in-use"></span>
       } else {
         lifeLineButton = <button id="life-line-btn" onClick={this.lifeLineClick}>Call A Friend</button>
       }

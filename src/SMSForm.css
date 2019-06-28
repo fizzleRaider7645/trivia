@@ -28,4 +28,6 @@
     display: inline-block;
     cursor: pointer;
     z-index: 1;
+    padding-left: 10px;
+    padding-right: 70px
   }
