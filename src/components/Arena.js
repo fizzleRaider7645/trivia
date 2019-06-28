@@ -3,7 +3,7 @@ import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
 import Round from './Round'
-import CallAFriendFrom from './CallAFriendForm'
+import SMSForm from './SMSForm';
 import '../App.css'
 
 class Arena extends Component {
@@ -73,8 +73,8 @@ class Arena extends Component {
           {/* </div> */}
           {/* <Round getEarnings={this.getEarnings} currentLevel={this.state.level} advance={this.advance} gameOver={this.props.gameOver} /> */}
           {/* {level} */}
+          <SMSForm />
           {/* {lifeLineButton} */}
-          <CallAFriendFrom />
           {/* <div id="scoreboard">
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
