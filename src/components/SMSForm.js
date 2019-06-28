@@ -7,7 +7,7 @@ class SMSForm extends Component {
         this.state = {
           message: {
             to: '',
-            body: ''
+            body: `Who Wants To Win 5 Bucks?!: ${this.props.contestant} needs your help! Join the Chat: https://who-wants-to-win-bucks-chat.herokuapp.com/`
           },
           submitting: false,
           error: false
@@ -54,23 +54,14 @@ class SMSForm extends Component {
     render() {
         return (
             <form
-            onSubmit={this.onSubmit}className={this.state.error ? 'error sms-form' : 'sms-form'}>
+            onSubmit={this.onSubmit} className={this.state.error ? 'error sms-form' : 'sms-form'}>
             <div>
-              <label htmlFor="to">To:</label>
+              <label htmlFor="to">Who Would You Like To Call!?:</label>
               <input
                 type="tel"
                 name="to"
                 id="to"
                 value={this.state.message.to}
-                onChange={this.onHandleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="body">Body:</label>
-              <textarea
-                name="body"
-                id="body"
-                value={this.state.message.body}
                 onChange={this.onHandleChange}
               />
             </div>
