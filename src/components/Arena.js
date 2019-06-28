@@ -3,7 +3,7 @@ import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
 import Round from './Round'
-// import Chat from './Chat'
+import CallAFriendFrom from './CallAFriendForm'
 import '../App.css'
 
 class Arena extends Component {
@@ -68,18 +68,19 @@ class Arena extends Component {
 
     return (
       <div id="arena">
-        <div id="marquee-border">
-          <h1>Who Wants to Win 5 Bucks?!</h1>
-          </div>
+        {/* <div id="marquee-border"> */}
+          {/* <h1>Who Wants to Win 5 Bucks?!</h1> */}
+          {/* </div> */}
           {/* <Round getEarnings={this.getEarnings} currentLevel={this.state.level} advance={this.advance} gameOver={this.props.gameOver} /> */}
-          {level}
-          {lifeLineButton}
-          <div id="scoreboard">
+          {/* {level} */}
+          {/* {lifeLineButton} */}
+          <CallAFriendFrom />
+          {/* <div id="scoreboard">
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
             <p>Earnings: ${this.state.earnings.toFixed(2)}</p>
 
-          </div>
+          </div> */}
       </div>
     );
   }
