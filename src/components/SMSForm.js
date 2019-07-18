@@ -61,7 +61,7 @@ class SMSForm extends Component {
                 onChange={this.onHandleChange}
               />
             </div>
-            <button type="submit" disabled={this.state.submitting}>Send message</button>
+            <button type="submit" disabled={this.state.submitting}>Send Message</button>
           </form>
           </div>
         );

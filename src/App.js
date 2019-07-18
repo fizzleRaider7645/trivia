@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   gameOver = () => {
-    alert('Game Over...')
+    alert('GAME OVER...')
     this.setState({
       gameInProgress: false,
       contestant: ""

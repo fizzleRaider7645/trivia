@@ -12,6 +12,7 @@ class Arena extends Component {
       level: 1,
       contestantHasWon: false,
       earnings: 0,
+      FiftyFifty: false,
       calledAFriend: false,
       textSent: false
     }
@@ -54,6 +55,12 @@ class Arena extends Component {
     })
   }
 
+  useFiftyFifty = () => {
+    this.setState({
+      FiftyFifty: true
+    })
+  }
+
   render() {
       let level;
       let lifeLineButton;
@@ -61,11 +68,11 @@ class Arena extends Component {
       let smsForm;
 
       if(this.state.level === 1) {
-        level = <One getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <One useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       } else if(this.state.level === 2) {
-        level = <Two getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <Two useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       } else {
-        level = <Three getEarnings={this.getEarnings} questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
+        level = <Three useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
       }
 
       if(this.state.calledAFriend && this.state.textSent) {
