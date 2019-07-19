@@ -4,22 +4,30 @@ class Timer extends Component {
     constructor() {
         super()
         this.state = {
-            count: 60
+            count: 5
         }
     }
 
 
     countDown = () => {
-        setTimeout(() => {
-            this.setState({
-                count: this.state.count - 1
-            })
-        }, 3000)
+        setInterval(() => {
+            if(this.state.count > 0) {
+                this.setState({
+                    count: this.state.count - 1
+                })
+            } else {
+                this.setState({
+                    count: 5
+                })
+                this.props.gameOver()
+            }
+        }, 1000)
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         this.countDown()
-    }  
+    }
+
 
 
     render() {

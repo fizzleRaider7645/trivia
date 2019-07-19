@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import QuestionContainer from '../QuestionContainer'
-import { connect } from 'react-redux'
-import { fetchMediumQuestions } from '../../actions/QuestionActions'
+import React, { Component } from 'react';
+import QuestionContainer from '../QuestionContainer';
+import { connect } from 'react-redux';
+import { fetchMediumQuestions } from '../../actions/QuestionActions';
+import Timer from '../Timer';
 
 class Two extends Component {
   constructor() {
@@ -36,6 +37,7 @@ class Two extends Component {
     return (
     <ol>
       {questionDisplay}
+      <Timer gameOver={this.props.gameOver}/>
       </ol>
       );
     }
