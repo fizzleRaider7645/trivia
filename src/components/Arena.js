@@ -3,7 +3,6 @@ import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
 import SMSForm from './SMSForm';
-import Timer from './Timer'
 import GameRound from './GameRound'
 import '../App.css'
 
@@ -72,7 +71,7 @@ class Arena extends Component {
       let smsForm;
 
       // if(this.state.level === 1) {
-        level = <GameRound getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <GameRound currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
         // level = <One timer={<Timer />} useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       // } else if(this.state.level === 2) {
         // level = <Two useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>

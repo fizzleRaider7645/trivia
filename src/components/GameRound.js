@@ -8,23 +8,24 @@ class GameRound extends Component {
     constructor() {
         super()
         this.state = {
-            level: 0,
+            // level: 0,
             questionsAsked: 0
         }
     }
 
     componentDidMount = () => {
-        if(this.state.level === 1) {
+        let currentLevel = this.props.currentLevel
+        if(currentLevel === 1) {
             this.props.fetchEasyQuestions()
-        } else if(this.state.level === 2) {
+        } else if(currentLevel === 2) {
             this.props.fetchMediumQuestions()
-        } else {
+        } else if (currentLevel === 3) {
             this.props.fetchHardQuestions()
         }
     }
 
     questionAsked = () => {
-        if(this.state.questionsAsked === 4) {
+        if(this.state.questionsAsked === 1) {
           this.props.advance()
         }
         this.setState({

@@ -9,6 +9,7 @@ class QuestionContainer extends Component {
         contestantAnswer: ""
     }
   }
+
   shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -52,12 +53,19 @@ class QuestionContainer extends Component {
   }
   
   render() {
-    let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
-    let answerBank = questionObj.incorrect_answers
+    let questionObj;
+    let answerBank;
+    // if(this.props.currentQuestionSet) {
+      // debugger
+      questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
+      answerBank = questionObj.incorrect_answers
+    // }
+    // let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
+    // let answerBank = questionObj.incorrect_answers
     if(this.state.guessing === false) {
           answerBank.push(questionObj.correct_answer)
           this.shuffle(answerBank)
-        }
+    }
         
         answerBank = answerBank.map( question => <li key={Math.random()}>{question}</li>)
       return (
