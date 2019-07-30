@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions';
+// import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions';
 import QuestionContainer from '../components/QuestionContainer'
  
 
@@ -14,18 +14,27 @@ class GameRound extends Component {
     }
 
     componentDidMount = () => {
-        let currentLevel = this.props.currentLevel
-        if(currentLevel === 1) {
-            this.props.fetchEasyQuestions()
-        } else if(currentLevel === 2) {
-            this.props.fetchMediumQuestions()
-        } else if (currentLevel === 3) {
-            this.props.fetchHardQuestions()
-        }
+        // let currentLevel = this.props.currentLevel
+        // if(currentLevel === 1) {
+            // this.props.fetchEasyQuestions()
+        // } else if(currentLevel === 2) {
+            // this.props.fetchMediumQuestions()
+        // } else if (currentLevel === 3) {
+            // this.props.fetchHardQuestions()
+        // }
     }
+
+    // resetQuestionCount = () => {
+    //   this.setState({
+    //     questionsAsked: 0
+    //   })
+    // }
 
     questionAsked = () => {
         if(this.state.questionsAsked === 1) {
+          this.setState({
+            questionsAsked: 0
+          })
           this.props.advance()
         }
         this.setState({
@@ -54,4 +63,4 @@ const mapStatetoProps = (state) => {
     })
   }
 
-export default connect(mapStatetoProps, { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions })(GameRound)
+export default connect(mapStatetoProps, null)(GameRound)

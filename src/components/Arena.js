@@ -3,8 +3,10 @@ import One from '../components/Levels/One'
 import Two from '../components/Levels/Two'
 import Three from '../components/Levels/Three'
 import SMSForm from './SMSForm';
-import GameRound from './GameRound'
-import '../App.css'
+import GameRound from './GameRound';
+import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions';
+import { connect } from 'react-redux';
+import '../App.css';
 
 class Arena extends Component {
   constructor() {
@@ -19,6 +21,21 @@ class Arena extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.fetchCurrentQuestions()
+  }
+
+  fetchCurrentQuestions = () => {
+    debugger
+    if(this.state.level === 1 && !this.state.earnings) {
+      this.props.fetchEasyQuestions()
+    } else if(this.state.level === 1 && this.state.earnings) {
+      this.props.fetchMediumQuestions()
+    } else {
+      this.props.fetchHardQuestions()
+    }
+  }
+
   advance = () => {
     if(this.state.level === 3) {
       this.contestantHasWon()
@@ -27,6 +44,7 @@ class Arena extends Component {
       this.setState({
         level: this.state.level + 1
       })
+      this.fetchCurrentQuestions()
     }
   }
 
@@ -107,4 +125,4 @@ class Arena extends Component {
   }
 }
 
-export default Arena
+export default connect(null, { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions })(Arena)
