@@ -13,6 +13,7 @@ class Arena extends Component {
     super()
     this.state = {
       level: 1,
+      questionsAsked: 0,
       contestantHasWon: false,
       earnings: 0,
       FiftyFifty: false,
@@ -23,6 +24,19 @@ class Arena extends Component {
 
   componentDidMount = () => {
     this.fetchCurrentQuestions()
+  }
+
+  questionAsked = () => {
+    if(this.state.questionsAsked === 4) {
+      this.setState({
+        questionsAsked: 0
+      })
+      this.advance()
+    } else {
+      this.setState({
+        questionsAsked: this.state.questionsAsked + 1
+      })
+    }
   }
 
   fetchCurrentQuestions = () => {
@@ -89,7 +103,7 @@ class Arena extends Component {
       let smsForm;
 
       // if(this.state.level === 1) {
-        level = <GameRound currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
+        level = <GameRound questionsAsked={this.state.questionsAsked} questionAsked={this.questionAsked} currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
         // level = <One timer={<Timer />} useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
       // } else if(this.state.level === 2) {
         // level = <Two useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>

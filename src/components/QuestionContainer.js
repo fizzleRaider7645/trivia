@@ -53,12 +53,8 @@ class QuestionContainer extends Component {
   }
   
   render() {
-    let questionObj;
-    let answerBank;
-    // if(this.props.currentQuestionSet) {
-      // debugger
-      questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
-      answerBank = questionObj.incorrect_answers
+    let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
+    let answerBank = questionObj.incorrect_answers
     // }
     // let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
     // let answerBank = questionObj.incorrect_answers

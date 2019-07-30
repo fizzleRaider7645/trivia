@@ -24,30 +24,21 @@ class GameRound extends Component {
         // }
     }
 
-    // resetQuestionCount = () => {
-    //   this.setState({
-    //     questionsAsked: 0
-    //   })
-    // }
-
-    questionAsked = () => {
-        if(this.state.questionsAsked === 1) {
-          this.setState({
-            questionsAsked: 0
-          })
-          this.props.advance()
-        }
-        this.setState({
-          questionsAsked: this.state.questionsAsked + 1
-        })
-      }
+    // questionAsked = () => {
+    //     // if(this.state.questionsAsked === 1) {
+    //     //   this.props.advance()
+    //     // }
+    //     this.setState({
+    //       questionsAsked: this.state.questionsAsked + 1
+    //     })
+    //   }
 
     render() {
         let questions;
         let questionDisplay;
         if(this.props.currentQuestionSet.length > 0) {
             questions = this.props.currentQuestionSet.map( q =>  q )
-            questionDisplay = <QuestionContainer getEarnings={this.props.getEarnings} gameOver={this.props.gameOver} questionAsked={this.questionAsked} questionsAsked={this.state.questionsAsked} advance={this.props.advance}/>
+            questionDisplay = <QuestionContainer getEarnings={this.props.getEarnings} gameOver={this.props.gameOver} questionAsked={this.props.questionAsked} questionsAsked={this.props.questionsAsked} advance={this.props.advance}/>
           }
         return (
             <ol>
