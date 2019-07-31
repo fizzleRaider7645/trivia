@@ -4,7 +4,7 @@ class Timer extends Component {
     constructor() {
         super()
         this.state = {
-            count: 5
+            count: 60
         }
     }
 
@@ -17,7 +17,7 @@ class Timer extends Component {
                 })
             } else {
                 this.setState({
-                    count: 5
+                    count: 60
                 })
                 this.props.gameOver()
             }

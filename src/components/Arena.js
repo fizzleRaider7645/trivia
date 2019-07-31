@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import One from '../components/Levels/One'
-import Two from '../components/Levels/Two'
-import Three from '../components/Levels/Three'
 import SMSForm from './SMSForm';
 import GameRound from './GameRound';
 import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions';
@@ -27,7 +24,7 @@ class Arena extends Component {
   }
 
   questionAsked = () => {
-    if(this.state.questionsAsked === 4) {
+    if(this.state.questionsAsked === 1) {
       this.setState({
         questionsAsked: 0
       })
@@ -40,7 +37,6 @@ class Arena extends Component {
   }
 
   fetchCurrentQuestions = () => {
-    debugger
     if(this.state.level === 1 && !this.state.earnings) {
       this.props.fetchEasyQuestions()
     } else if(this.state.level === 1 && this.state.earnings) {
@@ -130,6 +126,7 @@ class Arena extends Component {
           {lifeLineButton}
           {smsForm}
           <div id="scoreboard">
+            <p>{this.props.timer}</p>
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
             <p>Earnings: ${this.state.earnings.toFixed(2)}</p>

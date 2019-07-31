@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import LoginForm from './components/LoginForm'
-import Arena from './components/Arena'
+import LoginForm from './components/LoginForm';
+import Arena from './components/Arena';
+import Timer from './components/Timer'
 import './App.css';
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
     let arena;
 
     if(this.state.gameInProgress) {
-      arena = <Arena contestant={this.state.contestant} gameOver={this.gameOver}/>
+      arena = <Arena timer={<Timer gameOver={this.gameOver}/>} contestant={this.state.contestant} gameOver={this.gameOver}/>
     } else {
       loginForm = <LoginForm initiateGame={this.initiateGame}/>
     }

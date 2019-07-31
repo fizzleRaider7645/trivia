@@ -55,9 +55,6 @@ class QuestionContainer extends Component {
   render() {
     let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
     let answerBank = questionObj.incorrect_answers
-    // }
-    // let questionObj = this.props.currentQuestionSet[this.props.questionsAsked]
-    // let answerBank = questionObj.incorrect_answers
     if(this.state.guessing === false) {
           answerBank.push(questionObj.correct_answer)
           this.shuffle(answerBank)
