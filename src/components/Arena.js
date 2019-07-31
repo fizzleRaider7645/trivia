@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SMSForm from './SMSForm';
 import GameRound from './GameRound';
 import { fetchEasyQuestions, fetchMediumQuestions, fetchHardQuestions } from '../actions/QuestionActions';
+import Timer from './Timer'
 import { connect } from 'react-redux';
 import '../App.css';
 
@@ -23,8 +24,14 @@ class Arena extends Component {
     this.fetchCurrentQuestions()
   }
 
+  // resetTimer = () => {
+  //   this.setState({
+  //     count: 60
+  //   })
+  // }
+
   questionAsked = () => {
-    if(this.state.questionsAsked === 1) {
+    if(this.state.questionsAsked === 4) {
       this.setState({
         questionsAsked: 0
       })
@@ -98,15 +105,8 @@ class Arena extends Component {
       let calledAFriend;
       let smsForm;
 
-      // if(this.state.level === 1) {
-        level = <GameRound questionsAsked={this.state.questionsAsked} questionAsked={this.questionAsked} currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
-        // level = <One timer={<Timer />} useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
-      // } else if(this.state.level === 2) {
-        // level = <Two useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
-      // } else {
-        // level = <Three useFiftyFifty={this.state.useFiftyFifty} getEarnings={this.getEarnings} questions={this.props.currentQuestionSet} gameOver={this.props.gameOver} contestantHasWon={this.contestantHasWon}/>
-      // }
-
+      level = <GameRound questionsAsked={this.state.questionsAsked} questionAsked={this.questionAsked} currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
+ 
       if(this.state.calledAFriend && this.state.textSent) {
         lifeLineButton = <span id="life-line-used"></span>
       } else if(this.state.calledAFriend && !this.state.textSent) {
@@ -126,7 +126,7 @@ class Arena extends Component {
           {lifeLineButton}
           {smsForm}
           <div id="scoreboard">
-            <p>{this.props.timer}</p>
+            <p>{<Timer gameOver={this.props.gameOver} questionsAsked={this.state.questionsAsked}/>}</p>
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
             <p>Earnings: ${this.state.earnings.toFixed(2)}</p>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import equal from 'fast-deep-equal';
 
 class Timer extends Component {
     constructor() {
@@ -6,6 +7,12 @@ class Timer extends Component {
         this.state = {
             count: 60
         }
+    }
+
+    resetTimer = () => {
+        this.setState({
+            count: 60
+        })
     }
 
 
@@ -19,6 +26,7 @@ class Timer extends Component {
                 this.setState({
                     count: 60
                 })
+                this.resetTimer()
                 this.props.gameOver()
             }
         }, 1000)
@@ -28,13 +36,19 @@ class Timer extends Component {
         this.countDown()
     }
 
+    componentDidUpdate(prevProps) {
+        if(!equal(this.props.questionsAsked, prevProps.questionsAsked)) {
+            this.resetTimer()
+        }
+    }
+
 
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 {this.state.count}
-            </div>
+            </React.Fragment>
         )
     }
 }
