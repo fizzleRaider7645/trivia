@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from './components/LoginForm';
 import Arena from './components/Arena';
-// import Timer from './components/Timer'
 import './App.css';
 
 class App extends Component {

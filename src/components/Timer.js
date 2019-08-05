@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import equal from 'fast-deep-equal';
 
 class Timer extends Component {
+    timer = null
     constructor() {
         super()
         this.state = {
@@ -17,18 +18,10 @@ class Timer extends Component {
 
 
     countDown = () => {
-        setInterval(() => {
-            if(this.state.count > 0) {
+        this.timer = setInterval(() => {
                 this.setState({
                     count: this.state.count - 1
                 })
-            } else {
-                this.setState({
-                    count: 60
-                })
-                this.resetTimer()
-                this.props.gameOver()
-            }
         }, 1000)
     }
 
@@ -36,8 +29,14 @@ class Timer extends Component {
         this.countDown()
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timer)
+     }
+
     componentDidUpdate(prevProps) {
-        if(!equal(this.props.questionsAsked, prevProps.questionsAsked)) {
+        if(this.state.count < 0) {
+            this.props.gameOver()
+        } else if(!equal(this.props.questionsAsked, prevProps.questionsAsked)) {
             this.resetTimer()
         }
     }
