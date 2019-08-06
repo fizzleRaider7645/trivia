@@ -24,14 +24,9 @@ class Arena extends Component {
     this.fetchCurrentQuestions()
   }
 
-  // resetTimer = () => {
-  //   this.setState({
-  //     count: 60
-  //   })
-  // }
-
   questionAsked = () => {
-    if(this.state.questionsAsked === 4) {
+    // change back to 4 after adding VictoryScroll
+    if(this.state.questionsAsked === 1) { 
       this.setState({
         questionsAsked: 0
       })
@@ -70,7 +65,8 @@ class Arena extends Component {
       contestantHasWon: true
     })
     alert("WINNER")
-    this.props.gameOver()
+    this.props.playerWon()
+    // this.props.gameOver()
   }
 
   lifeLineClick = () => {
