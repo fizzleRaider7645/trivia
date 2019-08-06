@@ -9,6 +9,7 @@ class App extends Component {
     super()
     this.state = {
       gameInProgress: false,
+      needTologin: true,
       playerWon: false,
       contestant: "",
     }
@@ -17,7 +18,8 @@ class App extends Component {
   initiateGame = (loginInfo) => {
     this.setState({
       contestant: loginInfo.contestant,
-      gameInProgress: true
+      gameInProgress: true,
+      needTologin: false
     })
   }
 
@@ -32,15 +34,10 @@ class App extends Component {
   playerWon = () => {
     this.setState({
       playerWon: true,
-      gameInProgess: false
+      gameInProgress: false
     })
   }
 
-  gameInProgess = () => {
-    this.setState({
-      gameInProgess: false
-    })
-  }
 
   render() {
     let loginForm;
@@ -49,18 +46,11 @@ class App extends Component {
 
     if(this.state.gameInProgress) {
       arena = <Arena gameInProgess={this.gameInProgess} playerWon={this.playerWon} contestant={this.state.contestant} gameOver={this.gameOver}/>
-    } else if(!this.state.gameInProgress && !this.state.playerWon) {
+    } else if(this.state.needTologin) {
       loginForm = <LoginForm initiateGame={this.initiateGame}/>
-    } else {
+    } else if(this.state.playerWon){
       victoryScroll = <VictoryScroll />
     }
-
-    // if(this.state.gameInProgress) {
-    //   arena = <Arena playerWon={this.playerWon} contestant={this.state.contestant} gameOver={this.gameOver}/>
-    // } else {
-    //   loginForm = <LoginForm initiateGame={this.initiateGame}/>
-    // }
-
     return (
       <React.Fragment>
         {loginForm}
