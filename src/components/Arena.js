@@ -122,7 +122,7 @@ class Arena extends Component {
           {lifeLineButton}
           {smsForm}
           <div id="scoreboard">
-            <p>{<Timer gameOver={this.props.gameOver} questionsAsked={this.state.questionsAsked}/>}</p>
+            <p id="timer">{<Timer gameOver={this.props.gameOver} questionsAsked={this.state.questionsAsked}/>}</p>
             <p>Player: {this.props.contestant}</p>
             <p>Level: {this.state.level}</p>
             <p>Earnings: ${this.state.earnings.toFixed(2)}</p>

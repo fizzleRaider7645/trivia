@@ -96,8 +96,7 @@ button {
   bottom:0;
 }
 
-
-
-/* We're calling this animation "crawl" */
-/*  */
+p#timer {
+  color: gold;
+}
 
