@@ -6,7 +6,9 @@ class VictoryScroll extends Component {
   render() {
       return (
       <div id="victory-scroll">
-          THIS IS THE VICTORY SCROLL
+          <h2>Congratulations! You've Won $5.00!!!</h2>
+          <p>It may not be a million,</p>
+          <p>but the memories will last a lifetime!</p>
         </div>
       );
     }
