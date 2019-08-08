@@ -27,6 +27,7 @@ class App extends Component {
     alert('GAME OVER...')
     this.setState({
       gameInProgress: false,
+      playerWon: false,
       needTologin: true,
       contestant: ""
     })
@@ -43,15 +44,15 @@ class App extends Component {
   render() {
     let loginForm;
     let arena;
-    let victoryScroll = <VictoryScroll />;
+    let victoryScroll;
 
-    // if(this.state.gameInProgress) {
-    //   arena = <Arena gameInProgess={this.gameInProgess} playerWon={this.playerWon} contestant={this.state.contestant} gameOver={this.gameOver}/>
-    // } else if(this.state.needTologin) {
-    //   loginForm = <LoginForm initiateGame={this.initiateGame}/>
-    // } else if(this.state.playerWon){
-    //   victoryScroll = <VictoryScroll />
-    // }
+    if(this.state.gameInProgress) {
+      arena = <Arena gameInProgess={this.gameInProgess} playerWon={this.playerWon} contestant={this.state.contestant} gameOver={this.gameOver}/>
+    } else if(this.state.needTologin) {
+      loginForm = <LoginForm initiateGame={this.initiateGame}/>
+    } else if(this.state.playerWon){
+      victoryScroll = <VictoryScroll gameOver={this.gameOver}/>
+    }
     return (
       <React.Fragment>
         {loginForm}
