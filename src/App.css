@@ -100,3 +100,9 @@ p#timer {
   color: gold;
 }
 
+
+#scoreboard {
+  z-index: 10;  
+  position: absolute;  
+  right: 0;
+}

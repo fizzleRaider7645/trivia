@@ -25,8 +25,7 @@ class Arena extends Component {
   }
 
   questionAsked = () => {
-    // change back to 4 after adding VictoryScroll
-    if(this.state.questionsAsked === 1) { 
+    if(this.state.questionsAsked === 4) { 
       this.setState({
         questionsAsked: 0
       })
@@ -100,7 +99,7 @@ class Arena extends Component {
       let lifeLineButton;
       let calledAFriend;
       let smsForm;
-
+      // let scoreboard = <Scoreboard gameOver={this.props.gameOver} questionsAsked={this.state.questionsAsked}/>
       level = <GameRound questionsAsked={this.state.questionsAsked} questionAsked={this.questionAsked} currentLevel={this.state.level} getEarnings={this.getEarnings} advance={this.advance} gameOver={this.props.gameOver}/>
  
       if(this.state.calledAFriend && this.state.textSent) {
@@ -118,6 +117,7 @@ class Arena extends Component {
           <h1>Who Wants to Win 5 Bucks?!</h1>
           </div>
           {level}
+          {/* {scoreboard} */}
           {calledAFriend}
           {lifeLineButton}
           {smsForm}
