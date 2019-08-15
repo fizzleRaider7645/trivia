@@ -40,20 +40,17 @@ input {
   position: fixed;
   top: 45%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
 
 #name-input button {
     color: red;
     font-size: 22px;
-    /* text-align: center; */
     border: 10px solid yellow; 
     border-radius: 25px;
     position:absolute;
     width:200px;
     height:100px;
-    /* background:#063; */
     top:350px;
     right:25%;
     left:60%;
