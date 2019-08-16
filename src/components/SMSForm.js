@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../SMSForm.css'
-
+// Child of Arena Component
 class SMSForm extends Component {
     constructor(props) {
         super(props);
@@ -48,6 +48,7 @@ class SMSForm extends Component {
     
     render() {
         return (
+          // renders red line around SMSFrom div if invalid number has been entered
             <div id="popup">
             <form
             id="myPopup" onSubmit={this.onSubmit} className={this.state.error ? 'error sms-form' : 'sms-form'}>

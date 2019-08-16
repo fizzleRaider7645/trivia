@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// Child of App Component
 class LoginForm extends Component {
   constructor() {
     super()

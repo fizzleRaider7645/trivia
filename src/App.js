@@ -14,7 +14,7 @@ class App extends Component {
       contestant: "",
     }
   }
-
+  // initiates game upon user login
   initiateGame = (loginInfo) => {
     this.setState({
       contestant: loginInfo.contestant,
@@ -23,6 +23,7 @@ class App extends Component {
     })
   }
 
+  // ends game when incorrect answer is provided by winner/after VictoryScroll renders 
   gameOver = () => {
     alert('GAME OVER...')
     this.setState({
@@ -33,6 +34,7 @@ class App extends Component {
     })
   }
 
+  // renders VictoryScroll when user wins
   playerWon = () => {
     this.setState({
       playerWon: true,
