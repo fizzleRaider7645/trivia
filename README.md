@@ -7,7 +7,7 @@ React
 Node.js
 
 Installation:
-Clone repo https://github.com/fizzleRaider7645/trivia cd into the file location and run npm install or yarn install. In terminal, enter npm run dev to begin game.
+Clone repo https://github.com/fizzleRaider7645/trivia cd into the file location and run npm install or yarn install. In terminal, enter 'npm run dev' to begin game.
 
 
 API Reference:
